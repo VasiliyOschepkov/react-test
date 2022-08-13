@@ -3,19 +3,31 @@ import css from './Dialogs.module.css'
 import {NavLink} from "react-router-dom";
 
 const Dialogs = () => {
+
+    let dialogs = [
+        {id: 1, name: 'Vasiliy'},
+        {id: 2, name: 'Roma'},
+        {id: 3, name: 'Dima'},
+        {id: 4, name: 'Gala'}
+    ]
+
+    let messages = [
+        {id:1, message:'Hi'},
+        {id:2, message:'Yo'},
+        {id:3, message:'What are you doing?'}
+    ]
+
+    let dialogsElement = dialogs.map(d => <DialogsItem id={d.id} name={d.name}/>);
+    let messagesElement = messages.map(m =>  <Message value={m.message}/>);
+
     return (
         <div className={css.dialogs}>
             <div className={css.dialogsItem}>
-                <DialogsItem id='1' name='Vasiliy'/>
-                <DialogsItem id='1' name='Roma'/>
-                <DialogsItem id='1' name='Dima'/>
-                <DialogsItem id='1' name='Gala'/>
+                { dialogsElement }
             </div>
 
             <div className={css.messages}>
-                <Message value='Hi'/>
-                <Message value='Yo'/>
-                <Message value='What are you doing?'/>
+                { messagesElement }
             </div>
         </div>
     );
