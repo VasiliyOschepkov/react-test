@@ -2,15 +2,9 @@ import React from 'react'
 import css from './MyPosts.module.css'
 import Post from "./Post/Post";
 
-const MyPosts = () => {
-
-    let posts = [
-        {id: 1, message: 'Hi 1'},
-        {id: 2, message: 'Hi 2'},
-        {id: 3, message: 'Hi 3'}
-    ]
-
-    let postsElements = posts.map(p => <Post message={p.message}/>);
+const MyPosts = (props) => {
+debugger;
+    let postsElements = props.state.posts.map(p => <Post message={p.message}/>);
 
     return (
         <div className={css.myPostsBlock}>
