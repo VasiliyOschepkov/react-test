@@ -8,6 +8,7 @@ import {Route, Routes} from "react-router";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
+import {updateValuePost} from "./redux/state";
 
 
 
@@ -20,8 +21,16 @@ function App(props) {
                 <Navbar/>
                 <div className="content">
                     <Routes>
-                        <Route path="/dialogs/*" element={<Dialogs state={props.state.dialogPage} />}/>
-                        <Route path='/profile' element={<Profile state={props.state.profilePage}/>}/>
+                        <Route path="/dialogs/*" element={
+                            <Dialogs
+                                state={props.state.dialogPage}
+                            />}/>
+                        <Route path='/profile' element={
+                            <Profile
+                            state={props.state.profilePage}
+                            addPost={props.addPost}
+                            updateValuePost={props.updateValuePost}
+                            />}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/settings' element={<Settings/>}/>

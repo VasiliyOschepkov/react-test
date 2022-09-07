@@ -1,3 +1,5 @@
+import {render} from "../render";
+
 let state = {
     dialogPage: {
          dialogs: [
@@ -18,8 +20,24 @@ let state = {
             {id: 1, message: 'Hi 1'},
             {id: 2, message: 'Hi 2'},
             {id: 3, message: 'Hi 3'}
-        ]
+        ],
+        postValue: "It-camasutra"
     }
+}
+
+export let addPost = () => {
+    let Post = {
+      id : 5,
+      message: state.profilePage.postValue,
+    };
+    state.profilePage.posts.push(Post);
+    state.profilePage.postValue = "";
+    render(state);
+}
+
+export let updateValuePost = (value) => {
+    state.profilePage.postValue = value;
+    render(state);
 }
 
 export default state
