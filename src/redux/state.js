@@ -1,4 +1,6 @@
-import {render} from "../render";
+let render = () => {
+    console.log("Render function")
+}
 
 let state = {
     dialogPage: {
@@ -25,19 +27,23 @@ let state = {
     }
 }
 
-export let addPost = () => {
+export const addPost = () => {
     let Post = {
       id : 5,
       message: state.profilePage.postValue,
     };
     state.profilePage.posts.push(Post);
     state.profilePage.postValue = "";
-    render(state);
+    render();
 }
 
-export let updateValuePost = (value) => {
+export const updateValuePost = (value) => {
     state.profilePage.postValue = value;
-    render(state);
+    render();
+}
+
+export const subscribe = (observer) => {
+    render = observer;
 }
 
 export default state
