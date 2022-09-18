@@ -5,19 +5,18 @@ import store from './redux/state'
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-export let render = (state) => {
+export let render = () => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
         <React.StrictMode>
             <App
-                state={state}
-                addPost={store.addPost.bind(store)}
-                updateValuePost={store.updateValuePost.bind(store)}/>
+                state={store.getState()}
+                dispatch={store.dispatch.bind(store)}/>
         </React.StrictMode>
     );
 }
 
-render(store.getState())
+render()
 store.subscribe(render)
 
 // If you want to start measuring performance in your app, pass a function

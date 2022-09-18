@@ -9,12 +9,12 @@ debugger;
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.addPost();
+        props.dispatch({type: "ADD-POST"});
         newPostElement.current.value = "";
     }
 
     let changePost = () => {
-        props.updateValuePost(newPostElement.current.value);
+        props.dispatch({type: "UPDATE-VALUE-POST", newText: newPostElement.current.value});
     }
 
     return (

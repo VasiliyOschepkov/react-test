@@ -23,13 +23,16 @@ let store = {
             postValue: "It-camasutra"
         }
     },
+
     getState() {
         return this._state
     },
     render() {
         console.log("Render function")
     },
+
     addPost() {
+        debugger;
         let Post = {
             id : 5,
             message: this._state.profilePage.postValue,
@@ -42,6 +45,14 @@ let store = {
         this._state.profilePage.postValue = value;
         this.render();
     },
+    dispatch(action) {
+        if(action.type === "ADD-POST") {
+            this.addPost();
+        }else if (action.type === "UPDATE-VALUE-POST") {
+            this.updateValuePost(action.newText);
+        }
+    },
+
     subscribe(observer) {
         this.render = observer;
     }
